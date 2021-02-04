@@ -76,7 +76,7 @@ public class ProjectDetailsFragment extends Fragment {
         builder.setTitle("Title");
 
         final EditText input = new EditText(requireContext());
-        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
         builder.setView(input);
 
         builder.setPositiveButton("Ok", (dialog, which) ->

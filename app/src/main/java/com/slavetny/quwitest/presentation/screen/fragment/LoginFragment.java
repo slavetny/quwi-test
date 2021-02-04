@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,10 +85,20 @@ public class LoginFragment extends Fragment {
     }
 
     private Login getLoginBody(String login, String password) throws Exception {
-        if (!(login.isEmpty() && password.isEmpty())) {
-            return new Login(login, password);
+        if (!isValidEmail(login)) {
+            throw new Exception("Uncorrected Email address");
+        } else if (!isValidPassword(password)) {
+            throw new Exception("Uncorrected Password");
         } else {
-            throw new Exception("Uncorrected login or password");
+            return new Login(login, password);
         }
+    }
+
+    public boolean isValidEmail(CharSequence target) {
+        return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
+    }
+
+    public boolean isValidPassword(CharSequence target) {
+        return (!TextUtils.isEmpty(target)) && target.length() >= 5;
     }
 }
