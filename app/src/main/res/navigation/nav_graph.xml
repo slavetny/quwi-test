@@ -7,8 +7,38 @@
 
     <fragment
         android:id="@+id/login"
-        android:name="com.slavetny.quwitest.presentation.screen.login.LoginFragment"
+        android:name="com.slavetny.quwitest.presentation.screen.fragment.LoginFragment"
         android:label="Login Fragment"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+
+        <action
+            android:id="@+id/action_login_to_project_list"
+            app:destination="@id/project_list" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/project_list"
+        android:name="com.slavetny.quwitest.presentation.screen.fragment.ProjectListFragment"
+        android:label="Project List Fragment"
+        tools:layout="@layout/fragment_project_list" >
+        <action
+            android:id="@+id/action_project_list_to_project_details"
+            app:destination="@id/project_details" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/project_details"
+        android:name="com.slavetny.quwitest.presentation.screen.fragment.ProjectDetailsFragment"
+        android:label="Project Details Fragment"
+        tools:layout="@layout/fragment_project_details">
+
+        <argument
+            android:name="projectData"
+            app:nullable="true"
+            android:defaultValue="@null"
+            app:argType="com.slavetny.quwitest.domain.model.project.ProjectResponse" />
+
+    </fragment>
 
 </navigation>

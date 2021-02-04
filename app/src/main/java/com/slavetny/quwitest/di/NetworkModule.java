@@ -2,7 +2,6 @@ package com.slavetny.quwitest.di;
 
 import com.slavetny.quwitest.data.network.QuwiService;
 import com.slavetny.quwitest.domain.constants.Constants;
-
 import dagger.Module;
 import dagger.Provides;
 import dagger.hilt.InstallIn;
